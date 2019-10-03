@@ -1,11 +1,11 @@
-# DiplomadoBackEnd
+# Diplomado BackEnd
 Diplomado Desarrollo Web con C#
 
 ##### Tema I: Introducción a C#
-Introducción al entorno Visual Studio
-Introducción a la programación orientada a objetos con C#.
-Características de C#.
-Conexión a fuentes de datos SQL Server.
+- Introducción al entorno Visual Studio.
+- Introducción a la programación orientada a objetos con C#.
+- Características de C#.
+- Conexión a fuentes de datos SQL Server.
 
 ##### Tema II: Explorando ASP.NET MVC 5
 Creación de una aplicación web en Visual Studio.
