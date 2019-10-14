@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -45,6 +47,31 @@ namespace BackEnd.Web.Controllers
                "</body></html>";
 
             return carrosHTML;
+        }
+
+        public string TestConexionDB()
+        {
+            string connectionString = Models.ConexionDB.MiConexionString();
+            SqlConnection cnn = new SqlConnection(connectionString);
+            string conectado = "";
+
+            try
+            {
+                cnn.Open();
+                conectado = "Conexion exitosa";
+            }
+            catch (Exception ex)
+            {
+                conectado = $"Se produjo una excepcion {ex.Message}";
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            string html = $"<html><body>{conectado}</body></html>";
+
+            return html;
         }
 
         

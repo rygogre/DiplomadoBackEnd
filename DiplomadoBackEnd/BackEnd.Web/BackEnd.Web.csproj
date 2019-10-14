@@ -95,9 +95,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DetallesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JugadoresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConexionDB.cs" />
+    <Compile Include="Models\Jugador.cs" />
+    <Compile Include="Models\MantemientoJugador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +109,9 @@
     <None Include="packages.config" />
     <Content Include="Views\Detalles\Index.cshtml" />
     <Content Include="Views\Detalles\Autos.cshtml" />
+    <Content Include="Views\Jugadores\Index.cshtml" />
+    <Content Include="Views\Jugadores\Agregar.cshtml" />
+    <Content Include="Views\Jugadores\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -114,7 +121,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <PropertyGroup>
@@ -132,7 +138,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49792</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44331/</IISUrl>
+          <IISUrl>http://localhost:44331/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
