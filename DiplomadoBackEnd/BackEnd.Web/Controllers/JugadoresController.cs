@@ -76,5 +76,39 @@ namespace BackEnd.Web.Controllers
 
             return RedirectToAction("../Jugadores");
         }
+
+        public ActionResult GuardarTXT()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult GuardarTXT(FormCollection formCollection)
+        {
+            //Obtenemos los datos recibimos desde el formulario.
+            Models.Jugador jugador = new Models.Jugador
+            {
+                ID = 0,
+                Nombre = formCollection["nombre"],
+                Apellidos = formCollection["apellidos"],
+                Posicion = formCollection["posicion"],
+                Equipo = formCollection["equipo"]
+            };
+
+            //Instanciamos la clase, para llamar el metodo para escribir en el archivo.
+            Models.GuardarJugadorTXT guardarTXT = new Models.GuardarJugadorTXT();
+            guardarTXT.GuardarJugador(jugador);
+
+            return View();
+        }
+
+        public string LeerTXT()
+        {
+            Models.GuardarJugadorTXT guardarTXT = new Models.GuardarJugadorTXT();
+            string listadoJugadores = guardarTXT.LeerJugadores();
+
+            return listadoJugadores;
+
+        }
     }
 }
