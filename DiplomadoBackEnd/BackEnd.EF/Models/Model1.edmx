@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DiplomadoCurneDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Equipos">
+          <Key>
+            <PropertyRef Name="IDEquipo" />
+          </Key>
+          <Property Name="IDEquipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Jugadores">
+          <Key>
+            <PropertyRef Name="IDJugador" />
+          </Key>
+          <Property Name="IDJugador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Posicion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDEquipo" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Jugadores_Equipos">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
+          <End Role="Jugadores" Type="Self.Jugadores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="IDEquipo" />
+            </Principal>
+            <Dependent Role="Jugadores">
+              <PropertyRef Name="IDEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DiplomadoCurneDBModelStoreContainer">
+          <EntitySet Name="Equipos" EntityType="Self.Equipos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jugadores" EntityType="Self.Jugadores" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Jugadores_Equipos" Association="Self.FK_Jugadores_Equipos">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Jugadores" EntitySet="Jugadores" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DiplomadoCurneDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DiplomadoCurneDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Equipos" EntityType="DiplomadoCurneDBModel.Equipos" />
+          <EntitySet Name="Jugadores1" EntityType="DiplomadoCurneDBModel.Jugadores" />
+          <AssociationSet Name="FK_Jugadores_Equipos" Association="DiplomadoCurneDBModel.FK_Jugadores_Equipos">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Jugadore" EntitySet="Jugadores1" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Equipos">
+          <Key>
+            <PropertyRef Name="IDEquipo" />
+          </Key>
+          <Property Name="IDEquipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Jugadores" Relationship="DiplomadoCurneDBModel.FK_Jugadores_Equipos" FromRole="Equipos" ToRole="Jugadore" />
+        </EntityType>
+        <EntityType Name="Jugadores">
+          <Key>
+            <PropertyRef Name="IDJugador" />
+          </Key>
+          <Property Name="IDJugador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Posicion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDEquipo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Equipos" Relationship="DiplomadoCurneDBModel.FK_Jugadores_Equipos" FromRole="Jugadore" ToRole="Equipos" />
+        </EntityType>
+        <Association Name="FK_Jugadores_Equipos">
+          <End Type="DiplomadoCurneDBModel.Equipos" Role="Equipos" Multiplicity="1" />
+          <End Type="DiplomadoCurneDBModel.Jugadores" Role="Jugadore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="IDEquipo" />
+            </Principal>
+            <Dependent Role="Jugadore">
+              <PropertyRef Name="IDEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DiplomadoCurneDBModelStoreContainer" CdmEntityContainer="DiplomadoCurneDBEntities">
+          <EntitySetMapping Name="Equipos">
+            <EntityTypeMapping TypeName="DiplomadoCurneDBModel.Equipos">
+              <MappingFragment StoreEntitySet="Equipos">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IDEquipo" ColumnName="IDEquipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jugadores1">
+            <EntityTypeMapping TypeName="DiplomadoCurneDBModel.Jugadores">
+              <MappingFragment StoreEntitySet="Jugadores">
+                <ScalarProperty Name="IDEquipo" ColumnName="IDEquipo" />
+                <ScalarProperty Name="Posicion" ColumnName="Posicion" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IDJugador" ColumnName="IDJugador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

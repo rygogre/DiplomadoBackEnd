@@ -8,11 +8,13 @@ namespace BackEnd.Web.Controllers
 {
     public class JugadoresController : Controller
     {
+        Models.MantemientoJugador mantenimientoJugador;
+
         // GET: Jugadores
         public ActionResult Index()
         {
             //instanciamos clase...
-            Models.MantemientoJugador mantenimientoJugador = new Models.MantemientoJugador();
+           mantenimientoJugador = new Models.MantemientoJugador();
 
             var result = mantenimientoJugador.JugadoresAll(); //Llamamos metodo retorna lista.          
 
@@ -24,14 +26,7 @@ namespace BackEnd.Web.Controllers
 
             return View();
         }
-
-        public ActionResult Editar(int id)
-        {
-            Models.MantemientoJugador mantenimientoJugador = new Models.MantemientoJugador();
-            var result = mantenimientoJugador.JugadorByID(id);
-
-            return View(result);
-        }
+              
         
         [HttpPost]
         public ActionResult Agregar(FormCollection formCollection)
@@ -49,6 +44,15 @@ namespace BackEnd.Web.Controllers
             mantenimientoJugador.AgregarJugador(jugador);
 
             return RedirectToAction("../Jugadores");
+        }
+
+        public ActionResult Editar(int cod)
+        {
+            Models.MantemientoJugador mantenimientoJugador = 
+                new Models.MantemientoJugador();
+            var result = mantenimientoJugador.JugadorByID(cod);
+
+            return View(result);
         }
 
         [HttpPost]

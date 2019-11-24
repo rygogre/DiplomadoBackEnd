@@ -56,8 +56,11 @@ namespace BackEnd.Web.Models
 
         public int AgregarJugador(Jugador jugador)
         {
-            SqlCommand comando = new SqlCommand("INSERT INTO Jugadores (Nombre, Apellidos, Posicion, Equipo) VALUES (@nombre, @apellidos, @posicion, @equipo)", cnn);
-
+            SqlCommand comando = new 
+               SqlCommand("INSERT INTO Jugadores (Nombre, Apellidos, Posicion, Equipo) " 
+               +
+               "VALUES (@nombre, @apellidos, @posicion, @equipo)", cnn);
+                       
             comando.Parameters.Add("@nombre", SqlDbType.VarChar);
             comando.Parameters.Add("@apellidos", SqlDbType.VarChar);
             comando.Parameters.Add("@posicion", SqlDbType.VarChar);
@@ -72,13 +75,16 @@ namespace BackEnd.Web.Models
             int i = comando.ExecuteNonQuery(); //Retorno int de la fila afectada.
             cnn.Close();
          
-
             return i;
         }
 
         public int EditarJugador(Jugador jugador)
         {
-            SqlCommand comando = new SqlCommand($"UPDATE Jugadores SET Nombre=@nombre, Apellidos=@apellidos, Posicion=@posicion, Equipo=@equipo WHERE IDJugador={jugador.ID}", cnn);
+            SqlCommand comando = new 
+                SqlCommand($"UPDATE Jugadores SET Nombre=@nombre, " +
+                $"Apellidos=@apellidos, Posicion=@posicion, " +
+                $"Equipo=@equipo WHERE IDJugador={jugador.ID}", 
+                cnn);
 
             comando.Parameters.Add("@nombre", SqlDbType.VarChar);
             comando.Parameters.Add("@apellidos", SqlDbType.VarChar);
@@ -104,7 +110,8 @@ namespace BackEnd.Web.Models
         /// <returns>Jugador</returns>
         public Jugador JugadorByID(int id)
         {
-            SqlCommand comando = new SqlCommand("SELECT * FROM Jugadores WHERE IDJugador=@id", cnn);
+            SqlCommand comando = new SqlCommand("SELECT * FROM Jugadores WHERE " +
+                "IDJugador=@id", cnn);
 
             comando.Parameters.Add("@id", SqlDbType.Int);
             comando.Parameters["@id"].Value = id;
@@ -135,12 +142,13 @@ namespace BackEnd.Web.Models
         /// <returns></returns>
         public int Eliminar(int id)
         {
-            SqlCommand comando = new SqlCommand("DELETE FROM Jugadores WHERE IDJugador=@id", cnn);
+            SqlCommand comando = new SqlCommand("DELETE FROM Jugadores " +
+                "WHERE IDJugador=@id", cnn);
 
             comando.Parameters.Add("@id", SqlDbType.Int);
             comando.Parameters["@id"].Value = id;
             cnn.Open();
-            int i = comando.ExecuteNonQuery();
+            int i = comando.ExecuteNonQuery(); //retorna el numero de filas afectados.
 
             cnn.Close();
 

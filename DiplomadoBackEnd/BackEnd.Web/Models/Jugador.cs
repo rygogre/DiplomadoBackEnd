@@ -13,4 +13,6 @@ namespace BackEnd.Web.Models
         public string Posicion { get; set; }
         public string Equipo { get; set; }
     }
+
+
 }

@@ -11,9 +11,9 @@ namespace BackEnd.Web.Models
             
         public static string MiConexionString()
         {
-            return @"Data Source=SERVER; 
-            Initial Catalog=BASE DE DATOS; User ID=USUARIO; 
-            pwd=CLAVE; Persist Security Info=false;";
+            return @"Data Source=RYGOGREGROUP\SQLEXPRESS; 
+            Initial Catalog=DiplomadoCurneDB; User ID=rygogre; 
+            pwd=d56; Persist Security Info=false;";
         }
     }
 }

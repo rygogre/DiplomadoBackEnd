@@ -23,7 +23,6 @@ namespace BackEnd.Web.Models
             if (!file.Exists)
                 file.Create();
             
-
             //Trabajos con el archivo, para escribir información.            
             StreamWriter stream = new StreamWriter(System.Web.HttpContext.Current.Server.MapPath("/app_data/datos.txt"), true);            
             stream.WriteLine($"Nombre: {jugador.Nombre} <br> Apellidos: {jugador.Apellidos} <br> Equipo: {jugador.Equipo} <hr>");
