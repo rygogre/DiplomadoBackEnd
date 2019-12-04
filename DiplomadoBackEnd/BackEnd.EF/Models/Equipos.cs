@@ -21,6 +21,7 @@ namespace BackEnd.EF.Models
         }
     
         public int IDEquipo { get; set; }
+
         public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

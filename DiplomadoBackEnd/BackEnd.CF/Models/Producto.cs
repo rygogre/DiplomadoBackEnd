@@ -19,7 +19,7 @@ namespace BackEnd.CF.Models
      [Required]
         public decimal Precio { get; set; }
         [Required]
-        [DataType(DataType.Date)] //Definimos el tipo de dato.
+        [DataType(DataType.DateTime)] //Definimos el tipo de dato.
         [Display(Name = "Fecha Venc.")]
         public DateTime FechaVencimiento { get; set; }
      [Required]
@@ -30,7 +30,7 @@ namespace BackEnd.CF.Models
         public bool Estatus { get; set; }
         [Required]
         public int Disponible { get; set; }
-
+        [Required]
         public int CategoriaID { get; set; }
 
         [ForeignKey("CategoriaID")] //Llave foranea.

@@ -120,6 +120,7 @@
     <Compile Include="Models\Equipos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Jugadore.cs" />
     <Compile Include="Models\Jugadores.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

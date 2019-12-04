@@ -48,11 +48,13 @@ namespace BackEnd.EF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDJugador,Nombre,Apellidos,Posicion,IDEquipo")] Jugadores jugadores)
+        public ActionResult Create([Bind(Include = "IDJugador,Nombre,Apellidos,Posicion,IDEquipo")] Jugadore jugadore)
         {
             if (ModelState.IsValid)
             {
-                db.Jugadores1.Add(jugadores);
+                //Jugadores jug = new Jugadores();
+                //jug.Nombre = jugadore.Nombre;
+                //db.Jugadores1.Add(jugadore);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

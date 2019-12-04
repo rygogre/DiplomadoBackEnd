@@ -19,7 +19,10 @@ namespace BackEnd.CF.Controllers
         // GET: Productos
         public ActionResult Index()
         {
+            
             var productos = db.Productos.Include(p => p.Categoria);
+            ViewBag.TotalProductos = productos.Count();
+
             return View(productos.ToList());
         }
 

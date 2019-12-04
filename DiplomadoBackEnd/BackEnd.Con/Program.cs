@@ -11,6 +11,8 @@ namespace BackEnd.Con
     {
         static void Main(string[] args)
         {
+            
+
             Console.BackgroundColor = ConsoleColor.DarkBlue; //Nos permite definir un color de fondo.
 
             //retorno aqui con un goto.

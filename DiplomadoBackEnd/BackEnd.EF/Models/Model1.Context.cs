@@ -12,8 +12,7 @@ namespace BackEnd.EF.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.ModelConfiguration.Conventions;
-
+    
     public partial class DiplomadoCurneDBEntities : DbContext
     {
         public DiplomadoCurneDBEntities()
@@ -23,9 +22,7 @@ namespace BackEnd.EF.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            //throw new UnintentionalCodeFirstException();
+            throw new UnintentionalCodeFirstException();
         }
     
         public virtual DbSet<Equipos> Equipos { get; set; }

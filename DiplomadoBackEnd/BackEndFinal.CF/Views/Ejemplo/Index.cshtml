@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-12 bg-danger">
+            menu
+        </div>
+        <div class="col-md-6 col-sm-4 bg-info">
+            <div class="row test">
+                <div id="nombre" class="col-md-3 bg-success">soy 1</div>
+                <div id="nombre1" class="col-md-9 micolores">soy 2</div>
+            </div>
+        </div>
+        <div id="diplomado" class="col-md-3 col-sm-8 col- bg-primary">Diplomado 2</div>
+    </div>
+    <button id="agregar" type="button" class="btn btn-primary mt-3">Agregar Clase</button>
+    <button id="quitar" type="button" class="btn btn-danger mt-3">Quitar Clase</button>
+
+</div>
+
+@section Scripts {
+    <script>
+        jQuery(document).ready(function () {
+            console.log("JQuery nitido");
+
+            //$("#nombre").html("<h1>Aregando contenido.</h1>");
+            //$("#nombre1").text("<h1>Aregando contenido.</h1>");
+            //var d = document.getElementById("#");
+            //document.querySelector();
+            var diplomado = $("#diplomado");
+
+            $("#agregar").click(function () {               
+                diplomado.addClass("display-2");
+            });
+
+            $("#quitar").click(function () {
+                diplomado.removeClass("display-2");
+            });
+
+        });
+    </script>
+}
+
